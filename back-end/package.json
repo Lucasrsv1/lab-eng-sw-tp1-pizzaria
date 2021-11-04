@@ -1,0 +1,31 @@
+{
+	"name": "lab-eng-sw-tp1-pizzaria-back-end",
+	"version": "1.0.0",
+	"description": "Servidor da aplicação de venda de pizzas.",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon index.js",
+		"db_create": "sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all",
+		"db_drop": "sequelize-cli db:drop",
+		"db_migrate": "sequelize-cli db:migrate",
+		"db_seed": "sequelize-cli db:seed --seed"
+	},
+	"author": "Lucas Loscheider Reis Muniz, Lucas Rassilan Vilanova e Willian Silva de Almeida",
+	"license": "ISC",
+	"dependencies": {
+		"console-stamp": "^3.0.3",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"express-validator": "^6.13.0",
+		"jsonwebtoken": "^8.5.1",
+		"morgan": "^1.10.0",
+		"pg": "^8.7.1",
+		"sequelize": "^6.9.0"
+	},
+	"devDependencies": {
+		"eslint": "^8.1.0",
+		"nodemon": "^2.0.14",
+		"sequelize-cli": "^6.3.0"
+	}
+}
