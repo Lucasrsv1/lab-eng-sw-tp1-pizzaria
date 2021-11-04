@@ -1,6 +1,7 @@
 {
-	"name": "pizzaria",
-	"version": "0.0.0",
+	"name": "lab-eng-sw-tp1-pizzaria-front-end",
+	"version": "0.0.1",
+	"description": "Aplicação de pedidos e entregas de uma pizzaria.",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve --open",

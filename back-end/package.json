@@ -1,7 +1,7 @@
 {
 	"name": "lab-eng-sw-tp1-pizzaria-back-end",
-	"version": "1.0.0",
-	"description": "Servidor da aplicação de venda de pizzas.",
+	"version": "0.0.1",
+	"description": "Servidor da aplicação de pedidos e entregas de uma pizzaria.",
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon index.js",
