@@ -1,0 +1,62 @@
+// ========================================================================
+// Esquema do banco de dados do lab-eng-sw-tp1-pizzaria.
+// Para visualiza-lo acesse https://dbdiagram.io/d/6186f750d5d522682dfbb2cb
+// ========================================================================
+
+Project lab_eng_sw_tp1_pizzaria {
+  database_type: 'PostgreSQL'
+  Note: 'Aplicação de pedidos e entregas de uma pizzaria.'
+}
+
+Enum TipoItem {
+  BEBIDA
+  COMBO
+  PIZZA
+}
+
+Table itens {
+  id_item integer [pk, increment]
+  descricao varchar(255) [not null]
+  preco numeric(5, 2) [not null]
+  tipo TipoItem [not null]
+}
+
+Table bairros {
+  id_bairro integer [pk, increment]
+  nome varchar(255) [not null, unique]
+}
+
+Table clientes {
+  id_cliente integer [pk, increment]
+  nome varchar(255) [not null]
+  cpf varchar(31) [not null, unique]
+  email varchar(127) [not null, unique]
+  senha varchar(255) [not null]
+  telefone varchar(31) [not null]
+}
+
+Table enderecos {
+  id_endereco integer [pk, increment]
+  id_cliente integer [not null, ref: - clientes.id_cliente]
+  id_bairro integer [not null, ref: > bairros.id_bairro]
+  cep varchar(31) [not null]
+  rua varchar(255) [not null]
+  numero integer [not null]
+  apartamento boolean [not null, default: `false`]
+}
+
+Table pedidos {
+  id_pedido integer [pk, increment]
+  id_cliente integer [not null, ref: > clientes.id_cliente]
+  data_hora timestamp [not null, default: `now()`]
+  valor_total numeric(7, 2) [not null]
+}
+
+Table itens_pedidos {
+  id_item_pedido integer [pk, increment]
+  id_item integer [not null, ref: > itens.id_item]
+  id_pedido integer [not null, ref: > pedidos.id_pedido]
+  quantidade integer [not null, default: `1`]
+  meia_pizza boolean [not null, default: `false`]
+  id_pizza_complementar integer [null, ref: > itens.id_item]
+}
