@@ -1,14 +1,13 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Item extends Model {
+class Cliente extends Model {
 	/**
 	 * Cria as associações entre as tabelas do banco de dados
 	 * @param {import("./index")} models Modelos das tabelas do banco de dados
 	 */
 	static associate (models) {
-		Item.hasMany(models.ItemPedido, { as: "itensPedidos", foreignKey: "idItem" });
-		Item.hasMany(models.ItemPedido, { as: "pizzasComplementares", foreignKey: "idPizzaComplementar" });
-		Item.belongsToMany(models.Pedido, { as: "pedidos", foreignKey: "idItem", through: models.ItemPedido });
+		Cliente.hasOne(models.Endereco, { as: "endereco", foreignKey: "idCliente" });
+		Cliente.hasMany(models.Pedido, { as: "pedidos", foreignKey: "idCliente" });
 	}
 }
 
@@ -16,24 +15,34 @@ class Item extends Model {
  * Cria o modelo da tabela itens
  * @param {import("sequelize/types").Sequelize} sequelize
  */
-function initItem (sequelize) {
-	Item.init({
-		idItem: {
+function initCliente (sequelize) {
+	Cliente.init({
+		idCliente: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			autoIncrement: true,
 			primaryKey: true
 		},
-		descricao: {
+		nome: {
 			type: DataTypes.STRING(255),
 			allowNull: false
 		},
-		preco: {
-			type: DataTypes.DECIMAL(5, 2),
+		cpf: {
+			type: DataTypes.STRING(31),
+			allowNull: false,
+			unique: true
+		},
+		email: {
+			type: DataTypes.STRING(127),
+			allowNull: false,
+			unique: true
+		},
+		senha: {
+			type: DataTypes.STRING(255),
 			allowNull: false
 		},
-		tipo: {
-			type: DataTypes.ENUM("BEBIDA", "COMBO", "PIZZA"),
+		telefone: {
+			type: DataTypes.STRING(31),
 			allowNull: false
 		}
 	}, {
@@ -41,11 +50,11 @@ function initItem (sequelize) {
 		paranoid: false,
 		timestamps: false,
 		underscored: true,
-		modelName: "Item",
-		tableName: "itens"
+		modelName: "Cliente",
+		tableName: "clientes"
 	});
 
-	return Item;
+	return Cliente;
 }
 
-module.exports = initItem;
+module.exports = initCliente;
