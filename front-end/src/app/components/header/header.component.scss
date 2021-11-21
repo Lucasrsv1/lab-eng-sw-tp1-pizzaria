@@ -1,0 +1,43 @@
+.navbar {
+	background-color: var(--color-primary-0);
+}
+
+.navbar-nav .nav-link:not(.active) {
+	color: var(--color-secondary-1-1);
+}
+
+.navbar-nav .nav-link:not(.active):hover,
+.navbar-nav .nav-link.user:hover {
+	text-decoration: underline;
+}
+
+.navbar-nav .nav-link {
+	span, fa-icon {
+		line-height: 40px;
+		vertical-align: middle;
+	}
+
+	fa-icon {
+		font-size: 30px;
+		width: 35px;
+
+		&.logout-icon {
+			font-size: 20px;
+		}
+	}
+}
+
+.navbar-toggler {
+	border-color: white;
+
+	fa-icon {
+		font-size: 21px;
+		color: white;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 905px) {
+	.navbar-nav .nav-link:not(.user):not(.active) span {
+		display: none;
+	}
+}

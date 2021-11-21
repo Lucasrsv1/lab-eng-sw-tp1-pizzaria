@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-md navbar-dark pt-md-0 pb-md-0">
+	<div>
+		<button class="navbar-toggler pt-2 pb-2 mr-2" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" aria-controls="menu" [attr.aria-expanded]="!isMenuCollapsed" aria-label="Abrir menu">
+			<fa-icon [icon]="faBars"></fa-icon>
+		</button>
+
+		<a class="navbar-brand" [routerLink]="['/']">
+			<fa-icon class="mr-1" [icon]="faPizzaSlice"></fa-icon> Pizzaria BH
+		</a>
+	</div>
+
+	<div class="navbar-collapse justify-content-between" id="menu" [collapse]="isMenuCollapsed" [isAnimated]="true">
+		<ul class="navbar-nav me-auto mb-0 d-sm-flex">
+			<li class="nav-item">
+				<a class="nav-link" [routerLinkActive]="'active'" [routerLink]="['']">
+					<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faUtensils" title="Cardápio"></fa-icon> <span>Cardápio</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLinkActive]="'active'" [routerLink]="['/carrinho']">
+					<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faShoppingCart" title="Meu Carrinho"></fa-icon> <span>Carrinho</span>
+				</a>
+			</li>
+		</ul>
+
+		<ul class="navbar-nav mb-0 flex-row" *ngIf="isLoggedIn">
+			<li class="nav-item">
+				<a class="nav-link active" title="Sair" href="javascript:void(0)" (click)="logout()">
+					<fa-icon class="mr-2" [icon]="faUserCircle"></fa-icon>
+					<span>{{ nomeCliente }}</span>
+					<fa-icon class="logout-icon pl-2" [icon]="faSignOutAlt"></fa-icon>
+				</a>
+			</li>
+		</ul>
+
+		<ul class="navbar-nav mb-0 flex-row" *ngIf="!isLoggedIn">
+			<li class="nav-item">
+				<a class="nav-link active user pr-2" title="Entrar" [routerLink]="['/usuario']">
+					<span>Entrar</span>
+					<fa-icon class="logout-icon pl-2" [icon]="faSignInAlt"></fa-icon>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>

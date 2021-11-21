@@ -40,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 typings
+.node-version
 
 !.gitkeep
 !public/index.html
