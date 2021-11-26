@@ -8,10 +8,12 @@ import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { HeaderComponent } from "./header/header.component";
+import { VisualValidatorComponent } from "./visual-validator/visual-validator.component";
 
 @NgModule({
 	declarations: [
-		HeaderComponent
+		HeaderComponent,
+		VisualValidatorComponent
 	],
 	imports: [
 		BrowserModule,
@@ -22,7 +24,8 @@ import { HeaderComponent } from "./header/header.component";
 		FontAwesomeModule
 	],
 	exports: [
-		HeaderComponent
+		HeaderComponent,
+		VisualValidatorComponent
 	]
 })
 export class ComponentsModule { }

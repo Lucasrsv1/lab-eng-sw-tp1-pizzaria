@@ -57,9 +57,7 @@
 		"indent": [
 			"warn",
 			"tab",
-			{
-				"SwitchCase": 1
-			}
+			{ "SwitchCase": 1 }
 		],
 		"no-irregular-whitespace": "warn",
 		"no-whitespace-before-property": "warn",

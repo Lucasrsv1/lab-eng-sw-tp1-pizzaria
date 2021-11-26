@@ -1,0 +1,21 @@
+.background {
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: -2;
+	background-image: url("/assets/background.jpg");
+	background-size: cover;
+}
+
+.background::after {
+	content: "";
+	background-color: rgba($color: #FFF, $alpha: 0.2);
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: -1;
+}

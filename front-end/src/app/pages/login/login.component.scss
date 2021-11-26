@@ -1,0 +1,12 @@
+:host {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 56px);
+}
+
+.card {
+	max-width: 600px;
+	border: 1px solid var(--color-primary-3);
+}

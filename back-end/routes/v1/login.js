@@ -7,6 +7,6 @@ const router = Router();
 
 router.post("/login", LoginController.login.validations, LoginController.login);
 
-router.post("/cadastrar", ClienteController.cadastrar.validations, ClienteController.cadastrar);
+router.post("/signUp", ClienteController.cadastrar.validations, ClienteController.cadastrar);
 
 module.exports = router;

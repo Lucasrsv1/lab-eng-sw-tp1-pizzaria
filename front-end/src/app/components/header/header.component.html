@@ -25,9 +25,13 @@
 
 		<ul class="navbar-nav mb-0 flex-row" *ngIf="isLoggedIn">
 			<li class="nav-item">
-				<a class="nav-link active" title="Sair" href="javascript:void(0)" (click)="logout()">
+				<a class="nav-link active normal-cursor" title="Usuário Autenticado" href="javascript:void(0)">
 					<fa-icon class="mr-2" [icon]="faUserCircle"></fa-icon>
 					<span>{{ nomeCliente }}</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" title="Sair" href="javascript:void(0)" (click)="logout()">
 					<fa-icon class="logout-icon pl-2" [icon]="faSignOutAlt"></fa-icon>
 				</a>
 			</li>
@@ -35,7 +39,7 @@
 
 		<ul class="navbar-nav mb-0 flex-row" *ngIf="!isLoggedIn">
 			<li class="nav-item">
-				<a class="nav-link active user pr-2" title="Entrar" [routerLink]="['/usuario']">
+				<a class="nav-link active user pr-2" title="Entrar" [routerLink]="['/login']">
 					<span>Entrar</span>
 					<fa-icon class="logout-icon pl-2" [icon]="faSignInAlt"></fa-icon>
 				</a>

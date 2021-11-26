@@ -1,9 +1,34 @@
 /* Global style file */
 
+@import "./palette.scss";
+
+$primary: #DA680B;
+$secondary: #E3B42F;
+$dark: #6C757D;
+
+:root {
+	--primary: $primary;
+	--secondary: $secondary;
+	--dark: $dark;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
 /* Importing DatePicker SCSS file. */
 @import "~ngx-bootstrap/datepicker/bs-datepicker";
 
-@import "./palette.scss";
+/* === Block UI === */
+
+div.block-ui-wrapper {
+	background-color: rgba(0, 0, 0, 0.5);
+
+	.loader {
+		border-color: #FFF;
+		border-left-color: var(--color-secondary-1-0);
+	}
+}
+
+div.block-ui-spinner .message {
+	color: #FFF;
+}

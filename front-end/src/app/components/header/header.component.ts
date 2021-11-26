@@ -10,6 +10,8 @@ import {
 	faUtensils
 } from "@fortawesome/free-solid-svg-icons";
 
+import { ICliente } from "src/app/interfaces/cliente";
+
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
 
 @Component({
@@ -31,12 +33,19 @@ export class HeaderComponent {
 	public isMenuCollapsed: boolean = true;
 
 	constructor (private authenticationService: AuthenticationService) {
-		this.authenticationService.$loggedClient.subscribe(client => {
-			if (client) {
-				const nomes = client.nome.split(" ");
-				this.nomeCliente = nomes.filter((_, idx) => idx === 0 || idx === nomes.length - 1).join(" ");
-			}
+		// Monitora login e logout
+		this.authenticationService.$loggedClient.subscribe(cliente => {
+			this.obtemNomeCliente(cliente);
 		});
+
+		this.obtemNomeCliente(this.authenticationService.getLoggedUser());
+	}
+
+	private obtemNomeCliente (cliente: ICliente | null): void {
+		if (cliente) {
+			const nomes = cliente.nome.split(" ");
+			this.nomeCliente = nomes.filter((_, idx) => idx === 0 || idx === nomes.length - 1).join(" ");
+		}
 	}
 
 	public get isLoggedIn (): boolean {

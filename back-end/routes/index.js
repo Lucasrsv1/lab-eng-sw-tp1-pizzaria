@@ -7,7 +7,7 @@ const router = Router();
 // ============= Geral ============= //
 
 router.get("/", (_, res) => {
-	res.json({ message: "Pizzaria API" });
+	res.json({ message: "Pizzaria BH - API" });
 });
 
 router.get("/timestamp", (_, res) => {

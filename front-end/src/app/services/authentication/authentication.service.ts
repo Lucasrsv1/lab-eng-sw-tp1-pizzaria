@@ -2,10 +2,11 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
-import { tap } from "rxjs/operators";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 import jwtDecode from "jwt-decode";
+import { NgBlockUI } from "ng-block-ui";
+import { sha512 } from "js-sha512";
 
 import { environment } from "src/environments/environment";
 import { ICliente } from "src/app/interfaces/cliente";
@@ -24,37 +25,61 @@ export class AuthenticationService {
 		private readonly localStorage: LocalStorageService
 	) { }
 
-	public signUp (user: ICliente): Observable<ICliente> {
-		return this.http.post<ICliente>(`${environment.API_URL}/v1/signUp`, user).pipe(
-			tap(_ => {
+	public signUp (client: ICliente, blockUI?: NgBlockUI): void {
+		if (!client.senha) {
+			return this.alertsService.show(
+				"Erro ao Cadastrar",
+				"Nenhuma senha informada",
+				"error"
+			);
+		}
+
+		// Faz o hash da senha antes de fazer o cadastro
+		client.senha = sha512(client.senha);
+
+		this.http.post<ICliente>(`${environment.API_URL}/v1/signUp`, client).subscribe(
+			_ => {
+				if (blockUI) blockUI.stop();
+
 				this.alertsService.show("Cadastro Realizado", "O novo usuário foi cadastrado com sucesso.<br/>Você já pode fazer login com ele.", "success");
 				this.router.navigate(["login"]);
-			}, (error: HttpErrorResponse) => {
+			},
+			(error: HttpErrorResponse) => {
+				if (blockUI) blockUI.stop();
+
 				this.alertsService.httpErrorAlert(
 					"Erro ao Cadastrar",
 					"Não foi possível realizar o cadastro, tente novamente.",
 					error
 				);
-			})
+			}
 		);
 	}
 
-	public login (email: string, password: string): Observable<{ token: string }> {
-		return this.http.post<{ token: string }>(
+	public login (email: string, password: string, blockUI?: NgBlockUI): void {
+		// Faz o hash da senha antes de fazer o login
+		password = sha512(password);
+
+		this.http.post<{ token: string }>(
 			`${environment.API_URL}/v1/login`,
 			{ email, password }
-		).pipe(
-			tap(response => {
+		).subscribe(
+			response => {
+				if (blockUI) blockUI.stop();
+
 				this.localStorage.set(LocalStorageKey.USER, response.token);
 				this.router.navigate(["home"]);
 				this.$loggedClient.next(this.getLoggedUser());
-			}, (error: HttpErrorResponse) => {
+			},
+			(error: HttpErrorResponse) => {
+				if (blockUI) blockUI.stop();
+
 				this.alertsService.httpErrorAlert(
 					"Falha ao Entrar",
 					"Não foi possível fazer login, tente novamente.",
 					error
 				);
-			})
+			}
 		);
 	}
 

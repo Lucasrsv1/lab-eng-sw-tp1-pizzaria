@@ -27,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
 		return next.handle(req).pipe(tap(
 			() => { },
 			(httpError: HttpErrorResponse) => {
-				if ((httpError.error && httpError.error.expired) || httpError.status === 403) {
+				if ((httpError.error && httpError.error.expired) || (httpError.status === 403 && this.authenticationService.isLoggedIn())) {
 					this.authenticationService.signOut();
 					this.alertsService.show("Acesso Negado", "Sua sessão expirou. Por favor, faça login novamente.", "error");
 				}

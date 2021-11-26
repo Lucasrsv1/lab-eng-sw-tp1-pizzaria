@@ -1,11 +1,13 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { BlockUIModule } from "ng-block-ui";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { TextMaskModule } from "angular2-text-mask";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
@@ -33,6 +35,9 @@ import { RequestInterceptor } from "./services/authentication/request.intercepto
 		FontAwesomeModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule,
+		TextMaskModule,
 		CollapseModule.forRoot(),
 		BlockUIModule.forRoot(),
 		ComponentsModule

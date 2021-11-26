@@ -1,9 +1,9 @@
 .navbar {
-	background-color: var(--color-primary-0);
+	background-color: var(--color-secondary-1-0);
 }
 
 .navbar-nav .nav-link:not(.active) {
-	color: var(--color-secondary-1-1);
+	color: var(--color-complement-1);
 }
 
 .navbar-nav .nav-link:not(.active):hover,
@@ -34,6 +34,10 @@
 		font-size: 21px;
 		color: white;
 	}
+}
+
+.normal-cursor, .normal-cursor:hover, .normal-cursor:active {
+	cursor: default;
 }
 
 @media (min-width: 768px) and (max-width: 905px) {

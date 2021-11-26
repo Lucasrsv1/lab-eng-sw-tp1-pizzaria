@@ -3,6 +3,7 @@ const { sign, verify } = require("jsonwebtoken");
 
 const { isRequestInvalid } = require("../utils/http-validation");
 const db = require("../database/models");
+const { sha512 } = require("js-sha512");
 
 const KEY_TOKEN = "j2*pA73sGZ%8XWSdhVmoW28zeg^Qu@9X";
 const EXPIRATION_TIME = 3 * 24 * 60 * 60;
@@ -33,11 +34,14 @@ async function login (req, res) {
 	if (isRequestInvalid(req, res)) return;
 
 	try {
-		const user = await db.Users.findOne({
-			attributes: ["idUser", "name", "email", "type"],
+		// Faz o hash da senha antes de fazer o login
+		const password = sha512(req.body.password);
+
+		const user = await db.Cliente.findOne({
+			attributes: ["idCliente", "nome", "cpf", "email", "telefone"],
 			where: {
 				email: req.body.email,
-				password: req.body.password
+				senha: password
 			}
 		});
 

@@ -1,1 +1,101 @@
-<p>cadastro works!</p>
+<div class="container" align="center">
+	<div class="card text-start">
+		<div class="card-header p-3 bg-primary text-white">
+			Realizar cadastro na Pizzaria BH!
+		</div>
+
+		<div class="card-body">
+			<form [formGroup]="form" (ngSubmit)="signUp()">
+				<div class="text-left">
+					<div class="form-row">
+						<div class="form-group col-12">
+							<label for="email">Nome:</label>
+							<app-visual-validator [config]="validations" field="nome">
+								<input
+									#nomeInput
+									id="nome"
+									type="text"
+									class="form-control"
+									formControlName="nome"
+									placeholder="Digite seu nome"
+									autofocus
+								>
+							</app-visual-validator>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-12 col-md-6">
+							<label for="email">E-mail:</label>
+							<app-visual-validator [config]="validations" field="email">
+								<input
+									id="email"
+									type="email"
+									class="form-control"
+									formControlName="email"
+									placeholder="Digite seu e-mail"
+								>
+							</app-visual-validator>
+						</div>
+
+						<div class="form-group col-12 col-md-6">
+							<label for="senha">Senha:</label>
+							<app-visual-validator [config]="validations" field="senha">
+								<input
+									id="senha"
+									type="password"
+									class="form-control"
+									placeholder="Digite sua senha"
+									formControlName="senha"
+								>
+							</app-visual-validator>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-12 col-md-6">
+							<label>CPF:</label>
+							<app-visual-validator [config]="validations" field="cpf">
+								<input
+									id="cpf"
+									type="text"
+									class="form-control"
+									placeholder="___.___.___-__"
+									formControlName="cpf"
+									[textMask]="{ mask: cpfMask, guide: true }"
+								>
+							</app-visual-validator>
+						</div>
+
+						<div class="form-group col-12 col-md-6">
+							<label>Telefone:</label>
+							<app-visual-validator [config]="validations" field="telefone">
+								<input
+									id="telefone"
+									type="tel"
+									class="form-control"
+									placeholder="(__) ____-____"
+									formControlName="telefone"
+									[textMask]="{ mask: telephoneMask, guide: true }"
+								>
+							</app-visual-validator>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<button class="btn btn-dark pl-5 pr-5 mb-3 mr-3" type="button" (click)="clear()">
+						Limpar
+					</button>
+					<button class="btn btn-primary pl-5 pr-5 mb-3" type="submit" [disabled]="form.invalid">
+						Cadastrar
+					</button>
+				</div>
+			</form>
+
+			<div class="text-center">
+				<a [routerLink]="['/login']">Já tem usuário? Faça login aqui!</a>
+			</div>
+		</div>
+	</div>
+</div>

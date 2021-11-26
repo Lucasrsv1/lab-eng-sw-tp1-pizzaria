@@ -30,8 +30,7 @@ function initPedido (sequelize) {
 		},
 		dataHora: {
 			type: DataTypes.DATE,
-			allowNull: false,
-			defaultValue: DataTypes.fn("NOW")
+			allowNull: false
 		},
 		valorTotal:{
 			type: DataTypes.DECIMAL(7, 2),
