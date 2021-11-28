@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { BlockUIModule } from "ng-block-ui";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { NgSelectModule } from "@ng-select/ng-select";
 import { TextMaskModule } from "angular2-text-mask";
 
 import { AppComponent } from "./app.component";
@@ -17,6 +18,7 @@ import { ComponentsModule } from "./components/components.module";
 import { CadastroComponent } from "./pages/cadastro/cadastro.component";
 import { CardapioComponent } from "./pages/cardapio/cardapio.component";
 import { CarrinhoComponent } from "./pages/carrinho/carrinho.component";
+import { EnderecoComponent } from "./pages/endereco/endereco.component";
 import { LoginComponent } from "./pages/login/login.component";
 
 import { RequestInterceptor } from "./services/authentication/request.interceptor";
@@ -27,7 +29,8 @@ import { RequestInterceptor } from "./services/authentication/request.intercepto
 		CardapioComponent,
 		CarrinhoComponent,
 		LoginComponent,
-		CadastroComponent
+		CadastroComponent,
+		EnderecoComponent
 	],
 	imports: [
 		BrowserModule,
@@ -37,6 +40,7 @@ import { RequestInterceptor } from "./services/authentication/request.intercepto
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
+		NgSelectModule,
 		TextMaskModule,
 		CollapseModule.forRoot(),
 		BlockUIModule.forRoot(),

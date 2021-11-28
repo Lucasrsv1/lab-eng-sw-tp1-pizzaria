@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 
-const APP_KEY_PREFIX = "PIZZARIA_CLIENTE";
+const APP_KEY_PREFIX = "PIZZARIA_CLIENTE_";
 
 export enum LocalStorageKey {
+	ADDRESS = "ADDRESS",
 	USER = "USER"
 }
 
@@ -10,19 +11,19 @@ export enum LocalStorageKey {
 export class LocalStorageService {
 	constructor () { }
 
-	public hasKey (key: LocalStorageKey): boolean {
-		return Boolean(this.get(key));
+	public hasKey (key: LocalStorageKey, suffix: string = ""): boolean {
+		return Boolean(this.get(key, null, suffix));
 	}
 
-	public get (key: LocalStorageKey, defaultValue: any = null): string {
-		return window.localStorage.getItem(APP_KEY_PREFIX + key) || defaultValue;
+	public get (key: LocalStorageKey, defaultValue: any = null, suffix: string = ""): string {
+		return window.localStorage.getItem(APP_KEY_PREFIX + key + suffix) || defaultValue;
 	}
 
-	public set (key: LocalStorageKey, value: string): void {
-		window.localStorage.setItem(APP_KEY_PREFIX + key, value);
+	public set (key: LocalStorageKey, value: string, suffix: string = ""): void {
+		window.localStorage.setItem(APP_KEY_PREFIX + key + suffix, value);
 	}
 
-	public delete (key: LocalStorageKey): void {
-		window.localStorage.removeItem(APP_KEY_PREFIX + key);
+	public delete (key: LocalStorageKey, suffix: string = ""): void {
+		window.localStorage.removeItem(APP_KEY_PREFIX + key + suffix);
 	}
 }

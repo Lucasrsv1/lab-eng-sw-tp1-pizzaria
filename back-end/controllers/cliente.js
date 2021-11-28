@@ -3,8 +3,11 @@ const { sha512 } = require("js-sha512");
 const { UniqueConstraintError } = require("sequelize");
 
 const db = require("../database/models");
+const { isRequestInvalid } = require("../utils/http-validation");
 
 async function cadastrar (req, res) {
+	if (isRequestInvalid(req, res)) return;
+
 	const novoCliente = req.body;
 	try {
 		// Faz o hash da senha antes de fazer o cadastro

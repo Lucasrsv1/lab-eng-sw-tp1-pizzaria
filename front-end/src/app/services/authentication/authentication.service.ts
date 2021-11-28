@@ -84,6 +84,10 @@ export class AuthenticationService {
 	}
 
 	public signOut (): void {
+		const user = this.getLoggedUser();
+		if (user)
+			this.localStorage.delete(LocalStorageKey.ADDRESS, `_${user.idCliente}`);
+
 		this.localStorage.delete(LocalStorageKey.USER);
 		this.$loggedClient.next(null);
 		this.router.navigate([""]);

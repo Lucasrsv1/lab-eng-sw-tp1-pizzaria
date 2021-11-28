@@ -39,9 +39,3 @@
 .normal-cursor, .normal-cursor:hover, .normal-cursor:active {
 	cursor: default;
 }
-
-@media (min-width: 768px) and (max-width: 905px) {
-	.navbar-nav .nav-link:not(.user):not(.active) span {
-		display: none;
-	}
-}

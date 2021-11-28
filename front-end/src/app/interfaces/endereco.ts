@@ -3,7 +3,7 @@ import { ICliente } from "./cliente";
 
 export interface IEndereco {
 	idEndereco?: number;
-	idCliente: number;
+	idCliente?: number;
 	idBairro: number;
 	cep: string;
 	rua: string;

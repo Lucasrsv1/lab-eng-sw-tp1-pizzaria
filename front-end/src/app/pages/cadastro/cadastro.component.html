@@ -9,7 +9,7 @@
 				<div class="text-left">
 					<div class="form-row">
 						<div class="form-group col-12">
-							<label for="email">Nome:</label>
+							<label for="nome">Nome:</label>
 							<app-visual-validator [config]="validations" field="nome">
 								<input
 									#nomeInput
@@ -54,7 +54,7 @@
 
 					<div class="form-row">
 						<div class="form-group col-12 col-md-6">
-							<label>CPF:</label>
+							<label for="cpf">CPF:</label>
 							<app-visual-validator [config]="validations" field="cpf">
 								<input
 									id="cpf"
@@ -68,7 +68,7 @@
 						</div>
 
 						<div class="form-group col-12 col-md-6">
-							<label>Telefone:</label>
+							<label for="telefone">Telefone:</label>
 							<app-visual-validator [config]="validations" field="telefone">
 								<input
 									id="telefone"

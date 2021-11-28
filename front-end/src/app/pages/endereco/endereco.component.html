@@ -1,0 +1,95 @@
+<div class="container" align="center">
+	<div class="card text-start">
+		<div class="card-header p-3 bg-primary text-white">
+			Cadastro do Endereço de Entrega
+		</div>
+
+		<div class="card-body">
+			<form [formGroup]="form" (ngSubmit)="save()">
+				<div class="text-left">
+					<div class="form-row">
+						<div class="form-group col-12 col-sm-10">
+							<label for="rua">Rua:</label>
+							<app-visual-validator [config]="validations" field="rua">
+								<input
+									#ruaInput
+									id="rua"
+									type="text"
+									class="form-control"
+									formControlName="rua"
+									placeholder="Digite o nome da rua"
+									autofocus
+								>
+							</app-visual-validator>
+						</div>
+						<div class="form-group col-12 col-sm-2">
+							<label for="numero">Número:</label>
+							<app-visual-validator [config]="validations" field="numero">
+								<input
+									id="numero"
+									type="number"
+									class="form-control"
+									formControlName="numero"
+									placeholder="0"
+								>
+							</app-visual-validator>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-12 col-md-6">
+							<label for="cep">CEP:</label>
+							<app-visual-validator [config]="validations" field="cep">
+								<input
+									id="cep"
+									type="text"
+									class="form-control"
+									placeholder="_____-___"
+									formControlName="cep"
+									[textMask]="{ mask: cepMask, guide: true }"
+								>
+							</app-visual-validator>
+						</div>
+						<div class="form-group col-12 col-md-6">
+							<label for="bairro">Bairro:</label>
+							<app-visual-validator [config]="validations" field="bairro">
+								<ng-select id="bairro"
+									[items]="neighborhoods"
+									bindValue="idBairro"
+									bindLabel="nome"
+									dropdownPosition="bottom"
+									placeholder="Selecione um bairro"
+									formControlName="bairro"
+									[title]="neighborhoodTitle"
+								>
+									<ng-template ng-option-tmp let-item="item">
+										<div [title]="item.nome">{{item.nome}}</div>
+									</ng-template>
+								</ng-select>
+							</app-visual-validator>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-12">
+							<div class="custom-control custom-switch switch-both">
+								<input type="checkbox" class="custom-control-input" id="apartamento" formControlName="apartamento">
+								<label class="custom-control-label" for="apartamento"></label>
+								<label for="apartamento">Este endereço é um apartamento.</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<button class="btn btn-dark pl-5 pr-5 mb-3 mr-3" type="button" (click)="clear()">
+						Limpar
+					</button>
+					<button class="btn btn-primary pl-5 pr-5 mb-3" type="submit" [disabled]="form.invalid">
+						Salvar Endereço
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

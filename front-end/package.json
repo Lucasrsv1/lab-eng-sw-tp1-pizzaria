@@ -26,6 +26,7 @@
 		"@fortawesome/free-brands-svg-icons": "^5.15.4",
 		"@fortawesome/free-regular-svg-icons": "^5.15.4",
 		"@fortawesome/free-solid-svg-icons": "^5.15.4",
+		"@ng-select/ng-select": "^7.4.0",
 		"@sweetalert2/ngx-sweetalert2": "^10.0.0",
 		"angular-datatables": "^12.0.1",
 		"angular2-text-mask": "^9.0.0",

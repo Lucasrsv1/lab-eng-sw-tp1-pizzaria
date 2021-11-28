@@ -75,6 +75,8 @@ export class VisualValidatorComponent implements AfterContentInit {
 				return "Este campo deve ser um telefone válido";
 			case "failedCPF":
 				return "Este campo deve ser um CPF válido";
+			case "failedCEP":
+				return "Este campo deve ser um CEP válido";
 			default:
 				return "Preenchimento inválido";
 		}
