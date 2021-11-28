@@ -8,12 +8,16 @@ import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { HeaderComponent } from "./header/header.component";
+import { MenuItemComponent } from "./menu-item/menu-item.component";
 import { VisualValidatorComponent } from "./visual-validator/visual-validator.component";
+
+import { PipesModule } from "../pipes/pipes.module";
 
 @NgModule({
 	declarations: [
 		HeaderComponent,
-		VisualValidatorComponent
+		VisualValidatorComponent,
+		MenuItemComponent
 	],
 	imports: [
 		BrowserModule,
@@ -21,10 +25,12 @@ import { VisualValidatorComponent } from "./visual-validator/visual-validator.co
 		BlockUIModule.forRoot(),
 		CollapseModule.forRoot(),
 		BrowserAnimationsModule,
-		FontAwesomeModule
+		FontAwesomeModule,
+		PipesModule
 	],
 	exports: [
 		HeaderComponent,
+		MenuItemComponent,
 		VisualValidatorComponent
 	]
 })

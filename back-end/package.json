@@ -13,6 +13,9 @@
 	},
 	"author": "Lucas Loscheider Reis Muniz, Lucas Rassilan Vilanova e Willian Silva de Almeida",
 	"license": "ISC",
+	"repository": {
+		"url": "https://github.com/Lucasrsv1/lab-eng-sw-tp1-pizzaria"
+	},
 	"dependencies": {
 		"console-stamp": "^3.0.3",
 		"cors": "^2.8.5",

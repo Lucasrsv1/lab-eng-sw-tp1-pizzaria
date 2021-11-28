@@ -11,7 +11,11 @@
 		"test": "ng test",
 		"lint": "ng lint"
 	},
-	"private": true,
+	"author": "Lucas Loscheider Reis Muniz, Lucas Rassilan Vilanova e Willian Silva de Almeida",
+	"license": "ISC",
+	"repository": {
+		"url": "https://github.com/Lucasrsv1/lab-eng-sw-tp1-pizzaria"
+	},
 	"dependencies": {
 		"@angular/animations": "~12.2.0",
 		"@angular/common": "~12.2.0",

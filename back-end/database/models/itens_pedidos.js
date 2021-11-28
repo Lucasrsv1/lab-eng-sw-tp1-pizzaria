@@ -44,7 +44,7 @@ function initItemPedido (sequelize) {
 		},
 		idPizzaComplementar: {
 			type: DataTypes.INTEGER,
-			allowNull: false
+			allowNull: true
 		}
 	}, {
 		sequelize,

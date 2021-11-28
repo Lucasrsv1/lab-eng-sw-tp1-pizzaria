@@ -1,1 +1,37 @@
-<p>cardapio works!</p>
+<div class="container bg-white mb-4" align="center">
+	<div class="mt-4">
+		<h1 class="bg-primary mt-0 mb-3 p-2 text-white text-uppercase">Pizzas Grandes (8 pedaços)</h1>
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+			<app-menu-item
+				class="col"
+				*ngFor="let pizza of pizzas"
+				[item]="pizza"
+				(click)="buy(pizza)"
+			></app-menu-item>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h1 class="bg-primary mt-0 mb-3 p-2 text-white text-uppercase">Bebidas</h1>
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+			<app-menu-item
+				class="col"
+				*ngFor="let bebida of bebidas"
+				[item]="bebida"
+				(click)="buy(bebida)"
+			></app-menu-item>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<h1 class="bg-primary mt-0 mb-3 p-2 text-white text-uppercase">Combos</h1>
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+			<app-menu-item
+				class="col"
+				*ngFor="let combo of combos"
+				[item]="combo"
+				(click)="buy(combo)"
+			></app-menu-item>
+		</div>
+	</div>
+</div>

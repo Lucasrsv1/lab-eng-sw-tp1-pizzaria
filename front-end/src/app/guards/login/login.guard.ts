@@ -12,7 +12,7 @@ export class LoginGuard implements CanActivate {
 
 	public canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 		if (this.authenticationService.isLoggedIn()) {
-			this.router.navigate(["home"]);
+			this.router.navigate(["cardapio"]);
 			return false;
 		}
 

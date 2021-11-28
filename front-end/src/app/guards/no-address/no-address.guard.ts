@@ -18,7 +18,7 @@ export class NoAddressGuard implements CanActivate {
 		return new Observable(subscriber => {
 			this.addressService.isClientAddressValid().then(isValid => {
 				if (isValid) {
-					this.router.navigate([""]);
+					this.router.navigate(["cardapio"]);
 					subscriber.next(false);
 					return subscriber.complete();
 				}

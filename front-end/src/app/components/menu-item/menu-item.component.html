@@ -1,0 +1,13 @@
+<div class="item mb-3">
+	<div class="card text-center">
+		<div class="card-header p-2 bg-secondary text-white font-weight-bold">
+			{{ item?.descricao }}
+		</div>
+
+		<div class="card-body" [ngClass]="imgClass"></div>
+
+		<div class="card-footer p-2 bg-primary text-white">
+			{{ item?.preco | reais }}
+		</div>
+	</div>
+</div>

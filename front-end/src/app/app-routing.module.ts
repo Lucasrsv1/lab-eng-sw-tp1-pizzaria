@@ -13,12 +13,12 @@ import { EnderecoComponent } from "./pages/endereco/endereco.component";
 import { LoginComponent } from "./pages/login/login.component";
 
 const routes: Routes = [
-	{ path: "", component: CardapioComponent, canActivate: [HasAddressGuard] },
+	{ path: "cardapio", component: CardapioComponent, canActivate: [HasAddressGuard] },
 	{ path: "carrinho", component: CarrinhoComponent, canActivate: [AuthenticationGuard, HasAddressGuard] },
 	{ path: "endereco", component: EnderecoComponent, canActivate: [AuthenticationGuard, NoAddressGuard] },
 	{ path: "login", component: LoginComponent, canActivate: [LoginGuard] },
 	{ path: "cadastro", component: CadastroComponent, canActivate: [LoginGuard] },
-	{ path: "**", redirectTo: "" }
+	{ path: "**", redirectTo: "cardapio" }
 ];
 
 @NgModule({

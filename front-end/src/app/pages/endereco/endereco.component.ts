@@ -101,7 +101,7 @@ export class EnderecoComponent implements OnInit {
 		this.addressService.saveAddress(endereco).subscribe(
 			_ => {
 				this.blockUI?.stop();
-				this.router.navigate([""]);
+				this.router.navigate(["cardapio"]);
 			},
 			(error: HttpErrorResponse) => {
 				this.blockUI?.stop();

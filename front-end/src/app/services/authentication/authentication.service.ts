@@ -68,7 +68,7 @@ export class AuthenticationService {
 				if (blockUI) blockUI.stop();
 
 				this.localStorage.set(LocalStorageKey.USER, response.token);
-				this.router.navigate(["home"]);
+				this.router.navigate(["cardapio"]);
 				this.$loggedClient.next(this.getLoggedUser());
 			},
 			(error: HttpErrorResponse) => {
@@ -90,7 +90,7 @@ export class AuthenticationService {
 
 		this.localStorage.delete(LocalStorageKey.USER);
 		this.$loggedClient.next(null);
-		this.router.navigate([""]);
+		this.router.navigate(["cardapio"]);
 	}
 
 	public isLoggedIn (): boolean {
