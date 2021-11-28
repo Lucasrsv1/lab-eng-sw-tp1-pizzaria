@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import Swal, { SweetAlertIcon, SweetAlertResult } from "sweetalert2";
+
+import Swal, { SweetAlertIcon, SweetAlertInput, SweetAlertResult } from "sweetalert2";
 
 @Injectable({ providedIn: "root" })
 export class AlertsService {
@@ -16,30 +17,44 @@ export class AlertsService {
 		});
 	}
 
-	public confirm (text: string, danger: boolean = true): Promise<boolean> {
+	public confirm (
+		text: string,
+		title: string = "Confirmação",
+		cancelButtonText: string = "Cancelar",
+		danger: boolean = false
+	): Promise<boolean> {
 		return new Promise(resolve => {
 			Swal.fire({
 				icon: "question",
-				title: "Confirmação",
+				title,
 				text,
-				confirmButtonColor: danger ? "#DC3545" : "#198754",
+				confirmButtonColor: danger ? "#DC3545" : "#DA680B",
 				confirmButtonText: "SIM",
 				showCancelButton: true,
-				cancelButtonText: "Cancelar"
+				cancelButtonText
 			}).then((result: SweetAlertResult) => {
 				resolve(Boolean(result.value));
 			});
 		});
 	}
 
-	public prompt (title: string): Promise<string | undefined> {
+	public prompt (
+		title: string,
+		text: string = "",
+		inputType: SweetAlertInput = "text",
+		inputAttributes: Record<string, string> = {},
+		inputValue: string | number | boolean | undefined = undefined
+	): Promise<string | undefined> {
 		return new Promise(resolve => {
 			Swal.fire({
 				icon: "question",
 				title,
-				confirmButtonColor: "#0d6efd",
-				input: "text",
+				text,
+				confirmButtonColor: "#DA680B",
+				input: inputType,
 				showCancelButton: true,
+				inputAttributes,
+				inputValue,
 				cancelButtonText: "Cancelar"
 			}).then((result: SweetAlertResult) => {
 				resolve(result.value);

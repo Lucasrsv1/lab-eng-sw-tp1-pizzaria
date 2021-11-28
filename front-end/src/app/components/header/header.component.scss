@@ -12,7 +12,8 @@
 }
 
 .navbar-nav .nav-link {
-	span, fa-icon {
+	span,
+	fa-icon {
 		line-height: 40px;
 		vertical-align: middle;
 	}
@@ -36,6 +37,17 @@
 	}
 }
 
-.normal-cursor, .normal-cursor:hover, .normal-cursor:active {
+.normal-cursor,
+.normal-cursor:hover,
+.normal-cursor:active {
 	cursor: default;
+}
+
+.badge {
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	line-height: 23px !important;
+	margin-left: -20px;
+	margin-bottom: -25px;
 }

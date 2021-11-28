@@ -13,12 +13,15 @@
 		<ul class="navbar-nav me-auto mb-0 d-sm-flex">
 			<li class="nav-item">
 				<a class="nav-link" [routerLinkActive]="'active'" [routerLink]="['/cardapio']">
-					<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faUtensils" title="Cardápio"></fa-icon> <span>Cardápio</span>
+					<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faUtensils" title="Cardápio"></fa-icon>
+					<span>Cardápio</span>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" [routerLinkActive]="'active'" [routerLink]="['/carrinho']">
-					<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faShoppingCart" title="Meu Carrinho"></fa-icon> <span>Carrinho</span>
+					<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faShoppingCart" title="Meu Carrinho"></fa-icon>
+					<span class="p-0 badge badge-primary">{{ qtyItems }}</span>
+					<span>Carrinho</span>
 				</a>
 			</li>
 		</ul>

@@ -13,6 +13,7 @@ import {
 import { ICliente } from "src/app/interfaces/cliente";
 
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
+import { OrdersService } from "src/app/services/orders/orders.service";
 
 @Component({
 	selector: "app-header",
@@ -32,7 +33,10 @@ export class HeaderComponent {
 
 	public isMenuCollapsed: boolean = true;
 
-	constructor (private authenticationService: AuthenticationService) {
+	constructor (
+		private authenticationService: AuthenticationService,
+		private ordersService: OrdersService
+	) {
 		// Monitora login e logout
 		this.authenticationService.$loggedClient.subscribe(cliente => {
 			this.obtemNomeCliente(cliente);
@@ -41,18 +45,22 @@ export class HeaderComponent {
 		this.obtemNomeCliente(this.authenticationService.getLoggedUser());
 	}
 
+	public get isLoggedIn (): boolean {
+		return this.authenticationService.isLoggedIn();
+	}
+
+	public get qtyItems (): number {
+		return this.ordersService.getCart().length || 0;
+	}
+
+	public logout (): void {
+		this.authenticationService.signOut();
+	}
+
 	private obtemNomeCliente (cliente: ICliente | null): void {
 		if (cliente) {
 			const nomes = cliente.nome.split(" ");
 			this.nomeCliente = nomes.filter((_, idx) => idx === 0 || idx === nomes.length - 1).join(" ");
 		}
-	}
-
-	public get isLoggedIn (): boolean {
-		return this.authenticationService.isLoggedIn();
-	}
-
-	public logout (): void {
-		this.authenticationService.signOut();
 	}
 }

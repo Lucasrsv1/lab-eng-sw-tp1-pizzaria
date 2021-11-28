@@ -8,7 +8,7 @@ export enum TipoItem {
 }
 
 export interface IItem {
-	idItem?: number;
+	idItem: number;
 	descricao: string;
 	preco: number;
 	tipo: TipoItem;

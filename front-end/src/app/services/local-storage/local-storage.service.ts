@@ -4,6 +4,7 @@ const APP_KEY_PREFIX = "PIZZARIA_CLIENTE_";
 
 export enum LocalStorageKey {
 	ADDRESS = "ADDRESS",
+	CART = "CART",
 	USER = "USER"
 }
 
