@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 
 import { IItemPedido } from "src/app/interfaces/item-pedido";
 import { IPedido } from "src/app/interfaces/pedido";
@@ -54,21 +55,28 @@ export class OrdersService {
 		if (!cart.length)
 			throw new Error("O carrinho está vazio.");
 
+		const client = this.authenticationService.getLoggedUser();
+		if (!client)
+			throw new Error("Cliente não autenticado.");
+
+		const id = client.idCliente;
 		const order = {
 			valorTotal: cart.reduce((sum, i) => sum + this.getItemPrice(i), 0),
-			itensPedidos: cart
+			itens: cart
 		};
 
-		for (const item of order.itensPedidos) {
+		for (const item of order.itens) {
 			delete item.item;
 			delete item.idItemPedido;
 			delete item.pizzaComplementar;
 		}
 
-		return this.http.post<IPedido>(`${environment.API_URL}/v1/pedidos`, order);
+		return this.http.post<IPedido>(`${environment.API_URL}/v1/pedidos`, order).pipe(
+			tap(_ => this.localStorageService.set(LocalStorageKey.CART, "[]", `_${id}`))
+		);
 	}
 
-	private getItemPrice (itemPedido: IItemPedido): number {
+	public getItemPrice (itemPedido: IItemPedido): number {
 		if (!itemPedido.item) return 0;
 
 		let price = itemPedido.quantidade * itemPedido.item?.preco;

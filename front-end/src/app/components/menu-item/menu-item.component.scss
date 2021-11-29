@@ -1,3 +1,5 @@
+@import url(../item-img.scss);
+
 .item:hover, .item:active {
 	cursor: pointer;
 	border-radius: calc(0.25rem - 1px);
@@ -10,37 +12,10 @@
 	.card-body {
 		min-height: 150px;
 		background-size: cover;
+		background-position: center;
 	}
 
 	.card-footer {
 		font-size: large;
 	}
-}
-
-.p1 {
-	background-image: url("/assets/pizzas/1.jpg");
-}
-
-.p2 {
-	background-image: url("/assets/pizzas/2.jpg");
-}
-
-.p3 {
-	background-image: url("/assets/pizzas/3.jpg");
-}
-
-.p4 {
-	background-image: url("/assets/pizzas/4.jpg");
-}
-
-.p5 {
-	background-image: url("/assets/pizzas/5.jpg");
-}
-
-.p6 {
-	background-image: url("/assets/pizzas/6.jpg");
-}
-
-.drink {
-	background-image: url("/assets/copo.jpg");
 }

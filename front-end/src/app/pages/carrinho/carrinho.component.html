@@ -1,1 +1,38 @@
-<p>carrinho works!</p>
+<div class="container bg-white mb-4">
+	<div class="mt-4">
+		<div class="card mb-4" *ngIf="address">
+			<h5 class="card-header bg-primary text-white">
+				<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faMapMarkedAlt" title="Endereço"></fa-icon>
+				<span>Endereço de entrega</span>
+			</h5>
+
+			<div class="card-body">
+				<h5>{{ address.rua }} - {{ address.numero }} {{ address.apartamento ? "(Apartamento)" : "" }}</h5>
+				<h5>{{ address.cep }}</h5>
+				<h5>{{ address.bairro?.nome }} - Belo Horizonte</h5>
+			</div>
+		</div>
+
+		<div class="card">
+			<h5 class="card-header bg-primary text-white">
+				<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faShoppingBasket" title="Pedido"></fa-icon>
+				<span>Itens do seu pedido</span>
+			</h5>
+
+			<div class="card-body">
+				<app-cart-item *ngFor="let item of cart" [item]="item" (remove)="remove($event)"></app-cart-item>
+				<div *ngIf="!cart.length" class="alert alert-secondary">
+					Seu carrinho está vazio. Acesse o cardápio e adicione itens ao seu pedido!
+				</div>
+
+				<h5 class="text-right">Valor total: {{ orderPrice | reais }}</h5>
+				<div class="text-center">
+					<button class="btn btn-primary btn-lg" type="button" (click)="placeOrder()" [disabled]="!(cart.length > 0)">
+						<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faCheckCircle" title="Confirmar"></fa-icon>
+						<span>Finalizar Pedido</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

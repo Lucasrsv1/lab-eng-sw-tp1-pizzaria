@@ -2,6 +2,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 
+import { BlockUI, NgBlockUI } from "ng-block-ui";
+
 import { IItemPedido } from "src/app/interfaces/item-pedido";
 import { IItem, TipoItem } from "src/app/interfaces/item";
 
@@ -16,6 +18,9 @@ import { OrdersService } from "src/app/services/orders/orders.service";
 	styleUrls: ["./cardapio.component.scss"]
 })
 export class CardapioComponent implements OnInit {
+	@BlockUI()
+	private blockUI?: NgBlockUI;
+
 	public items: IItem[] = [];
 
 	private meiaPizza?: IItem = undefined;
@@ -29,9 +34,14 @@ export class CardapioComponent implements OnInit {
 	) { }
 
 	public ngOnInit (): void {
+		this.blockUI?.start("Carregando cardápio...");
 		this.menuService.getMenu().subscribe(
-			items => this.items = items,
+			items => {
+				this.blockUI?.stop();
+				this.items = items;
+			},
 			(error: HttpErrorResponse) => {
+				this.blockUI?.stop();
 				this.alertsService.httpErrorAlert(
 					"Erro ao Obter Cardápio",
 					"Não foi possível realizar o consulta no servidor, tente novamente.",
@@ -73,7 +83,7 @@ export class CardapioComponent implements OnInit {
 			}
 		}
 
-		if (this.meiaPizza && item.tipo !== TipoItem.PIZZA)
+		if (this.meiaPizza && (item.tipo !== TipoItem.PIZZA || this.meiaPizza.idItem === item.idItem))
 			this.meiaPizza = undefined;
 
 		let question: string;

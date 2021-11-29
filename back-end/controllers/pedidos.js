@@ -29,6 +29,7 @@ async function cadastraPedido (req, res) {
 cadastraPedido.validations = [
 	ensureAuthorized,
 	body("valorTotal").isNumeric().withMessage("O valor total do pedido é inválido.").toFloat(),
+	body("itens").isArray().withMessage("Os itens do pedido são inválidos."),
 	check("itens.*.idItem").isNumeric().withMessage("A ID do item é inválida.").toInt(),
 	check("itens.*.quantidade").isNumeric().withMessage("A quantidade de algum item é inválida.").toInt(),
 	check("itens.*.meiaPizza").isBoolean({ strict: true }).withMessage("Meia pizza inválida.").toBoolean(),

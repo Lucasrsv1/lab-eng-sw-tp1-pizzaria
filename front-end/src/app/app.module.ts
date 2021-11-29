@@ -21,6 +21,7 @@ import { CarrinhoComponent } from "./pages/carrinho/carrinho.component";
 import { EnderecoComponent } from "./pages/endereco/endereco.component";
 import { LoginComponent } from "./pages/login/login.component";
 
+import { PipesModule } from "./pipes/pipes.module";
 import { RequestInterceptor } from "./services/authentication/request.interceptor";
 
 @NgModule({
@@ -44,7 +45,8 @@ import { RequestInterceptor } from "./services/authentication/request.intercepto
 		TextMaskModule,
 		CollapseModule.forRoot(),
 		BlockUIModule.forRoot(),
-		ComponentsModule
+		ComponentsModule,
+		PipesModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }

@@ -1,5 +1,9 @@
-.container > div {
-	padding-top: 15px;
+.container {
+	border-radius: 5px;
+
+	&> div {
+		padding-top: 15px;
+	}
 }
 
 h1 {

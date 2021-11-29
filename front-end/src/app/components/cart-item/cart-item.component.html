@@ -1,0 +1,12 @@
+<div class="mb-3 d-flex flex-row bg-light p-2">
+	<div class="img mr-4" [ngClass]="imgClass"></div>
+	<div>
+		<h3>{{ description }}</h3>
+		<h4>Quantidade: {{ quantity }}</h4>
+		<h4>Preço unitário: {{ unitPrice | reais }}</h4>
+		<button class="btn btn-danger btn-sm" (click)="remove.emit(item?.idItemPedido)">
+			<fa-icon class="mr-2 d-inline-block d-md-inline" [icon]="faTimes" title="Remover"></fa-icon>
+			<span>Remover do Carrinho</span>
+		</button>
+	</div>
+</div>

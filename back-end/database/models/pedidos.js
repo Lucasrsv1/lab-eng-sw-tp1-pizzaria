@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, Sequelize } = require("sequelize");
 
 class Pedido extends Model {
 	/**
@@ -30,7 +30,8 @@ function initPedido (sequelize) {
 		},
 		dataHora: {
 			type: DataTypes.DATE,
-			allowNull: false
+			allowNull: false,
+			defaultValue: Sequelize.fn("NOW")
 		},
 		valorTotal:{
 			type: DataTypes.DECIMAL(7, 2),

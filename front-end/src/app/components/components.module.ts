@@ -7,6 +7,7 @@ import { BlockUIModule } from "ng-block-ui";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
+import { CartItemComponent } from "./cart-item/cart-item.component";
 import { HeaderComponent } from "./header/header.component";
 import { MenuItemComponent } from "./menu-item/menu-item.component";
 import { VisualValidatorComponent } from "./visual-validator/visual-validator.component";
@@ -15,9 +16,10 @@ import { PipesModule } from "../pipes/pipes.module";
 
 @NgModule({
 	declarations: [
+		CartItemComponent,
 		HeaderComponent,
-		VisualValidatorComponent,
-		MenuItemComponent
+		MenuItemComponent,
+		VisualValidatorComponent
 	],
 	imports: [
 		BrowserModule,
@@ -29,6 +31,7 @@ import { PipesModule } from "../pipes/pipes.module";
 		PipesModule
 	],
 	exports: [
+		CartItemComponent,
 		HeaderComponent,
 		MenuItemComponent,
 		VisualValidatorComponent
