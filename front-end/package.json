@@ -11,7 +11,7 @@
 		"test": "ng test",
 		"lint": "ng lint"
 	},
-	"author": "Lucas Loscheider Reis Muniz, Lucas Rassilan Vilanova e Willian Silva de Almeida",
+	"author": "Lucas Rassilan Vilanova",
 	"license": "ISC",
 	"repository": {
 		"url": "https://github.com/Lucasrsv1/lab-eng-sw-tp1-pizzaria"
